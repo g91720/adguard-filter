@@ -1,0 +1,43 @@
+name: Update AdGuard filters
+
+on:
+  schedule:
+    # Every day at 03:17 UTC (11:17 Asia/Taipei)
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "sources.json"
+      - ".github/workflows/update-adguard-filters.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-adguard-filters
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Convert Surge modules to AdGuard filters
+        run: python3 scripts/convert_sgmodule.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- adguard && [ -z "$(git ls-files --others --exclude-standard adguard)" ]; then
+            echo "Filters unchanged, nothing to commit."
+            exit 0
+          fi
+          version="$(grep -m1 '^! Version:' adguard/LINE-ADs.txt | cut -d' ' -f3-)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add adguard
+          git commit -m "chore(adguard): update filters (upstream ${version}, $(date -u +%Y-%m-%d))"
+          git push
