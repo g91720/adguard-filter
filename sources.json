@@ -1,0 +1,12 @@
+{
+  "homepage": "https://github.com/g91720/adguard-filter",
+  "sources": [
+    {
+      "name": "LINE-ADs",
+      "title": "LINE ADs + Privacy (AdGuard)",
+      "url": "https://raw.githubusercontent.com/jkgtw/Surge/master/Modules/LINE-ADs.sgmodule",
+      "out": "adguard/LINE-ADs.txt",
+      "dns_out": "adguard/LINE-ADs-dns.txt"
+    }
+  ]
+}

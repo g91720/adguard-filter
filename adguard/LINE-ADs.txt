@@ -1,0 +1,83 @@
+! Title: LINE ADs + Privacy (AdGuard)
+! Description: LINE 去廣告 + 遙測/追蹤/分析阻擋 v20260904.02（需啟用 MitM over HTTP/2）
+! Version: 20260904.02
+! Last modified: 2026-09-16T16:55:45Z
+! Expires: 1 day (update frequency)
+! Homepage: https://github.com/g91720/adguard-filter
+! Source: https://raw.githubusercontent.com/jkgtw/Surge/master/Modules/LINE-ADs.sgmodule
+! Converted automatically from the Surge module above; do not edit by hand.
+! Rules: 4 domain, 22 URL (basic), 0 URL (regex), 0 skipped
+! URL rules only work with AdGuard HTTPS filtering enabled for these hosts:
+!   a.line.me, gw.line.naver.jp, legy.line-apps.com, w.line.me, sch.line.me, crs-event.line.me, static.line-scdn.net, web-mmap-pay.line-apps.com, scdn.line-apps.com, cix.line-apps.com
+!
+! ============================================================
+! 1. LINE Ads / Smart Channel
+! ============================================================
+
+! LINE Ads impression / event pixels
+||a.line.me/er/lads/v*/ei^$redirect=1x1-transparent.gif
+||a.line.me/er/lass/v*/event/image^$redirect=1x1-transparent.gif
+||a.line.me/er/ladg/v*/event/image^$redirect=1x1-transparent.gif
+||a.line.me/er/lads/v*/event/image^$redirect=1x1-transparent.gif
+
+! LINE Ads APIs
+||a.line.me/lass/api/v*/ads^
+||a.line.me/oa/v*/e^
+||a.line.me/cs/v*/oa^
+
+! Legacy / compatibility ads gateways
+||gw.line.naver.jp/ext/lgfp/lad/v*^
+||gw.line.naver.jp/lass/api/v*/ads^
+
+! Current LINE Ads / Smart Channel
+||legy.line-apps.com/ext/lgfp/lad/v*^
+||legy.line-apps.com/ext/smartch/banner/sch/v*^
+
+! Other explicit ad APIs
+||w.line.me/adp/api/ad/v*/
+||sch.line.me/api/v*/ads^
+
+! Smart Channel ad media CDN
+! Whole host is dedicated to ad media in collected traffic, so no MITM is needed.
+||ad.line-scdn.net^
+
+! Home / GEB promotional banner media
+! Observed URL example:
+! This host supplied the Home GEB banner creative captured from GetModulesByModuleIds.
+||ec-bot-obs.line-scdn.net^
+
+! LINE Web / LIFF Ads SDK
+||static.line-scdn.net/ad-sdk/
+
+! LINE Pay / LIFF campaign banner
+||web-mmap-pay.line-apps.com/tw/liff/campaign/v*/aggregate/ad/banner/
+
+! Legacy LINE event/banner assets
+||scdn.line-apps.com/lan/image/line/bannerImageEvent/
+||scdn.line-apps.com/lan/document/pageEvent/line/ios/
+
+! ============================================================
+! 2. Telemetry / Tracking / Analytics / Diagnostics
+! ============================================================
+
+! LINE generic event tracking
+||gw.line.naver.jp/tr/event^
+||legy.line-apps.com/tr/event^
+
+! Recommendation / content impression collector
+||crs-event.line.me/v*/imp^
+
+! UTS analytics
+! uts-front is LINE's analytics endpoint; block the whole collector host.
+||uts-front.line-apps.com^
+
+! Also prevent LIFF/WebView pages from loading the UTS analytics SDK itself.
+||static.line-scdn.net/uts/
+
+! NELO2 diagnostics / log collector
+||nelo2-col.linecorp.com^
+
+! CIX client-information endpoint.
+! Observed requests include OS/app version, carrier, region and timestamp.
+! Keep this path-scoped instead of rejecting the entire cix.line-apps.com host.
+||cix.line-apps.com/R*^
