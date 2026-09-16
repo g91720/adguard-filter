@@ -3,7 +3,7 @@
 ! Version: 20260904.02
 ! Last modified: 2026-09-16T16:55:01Z
 ! Expires: 1 day (update frequency)
-! Homepage: https://github.com/g91720/adguard-filters
+! Homepage: https://github.com/g91720/adguard-filter
 ! Source: https://raw.githubusercontent.com/jkgtw/Surge/master/Modules/LINE-ADs.sgmodule
 ! Converted automatically from the Surge module above; do not edit by hand.
 ! Domain-only subset: works without HTTPS filtering (DNS filtering, AdGuard Home, Private DNS).

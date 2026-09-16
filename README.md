@@ -1,4 +1,4 @@
-# adguard-filters
+# adguard-filter
 
 ## AdGuard 過濾規則（由 Surge 模組自動轉換）
 
@@ -7,8 +7,8 @@ GitHub Actions 每天自動抓取上游 Surge 模組，轉成 AdGuard 語法後�
 
 | 訂閱網址 | 內容 | 需要 HTTPS 過濾 |
 |---|---|---|
-| `https://raw.githubusercontent.com/g91720/adguard-filters/main/adguard/LINE-ADs.txt` | 完整版：網域規則 + URL 路徑規則 | 是（URL 規則） |
-| `https://raw.githubusercontent.com/g91720/adguard-filters/main/adguard/LINE-ADs-dns.txt` | 只有網域規則，DNS 層即可生效 | 否 |
+| `https://raw.githubusercontent.com/g91720/adguard-filter/main/adguard/LINE-ADs.txt` | 完整版：網域規則 + URL 路徑規則 | 是（URL 規則） |
+| `https://raw.githubusercontent.com/g91720/adguard-filter/main/adguard/LINE-ADs-dns.txt` | 只有網域規則，DNS 層即可生效 | 否 |
 
 上游來源：<https://raw.githubusercontent.com/jkgtw/Surge/master/Modules/LINE-ADs.sgmodule>（jkgtw/Surge，`LINE-ADs.sgmodule`）
 
