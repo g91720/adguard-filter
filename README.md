@@ -71,6 +71,6 @@ python3 scripts/convert_sgmodule.py --from-file x.sgmodule   # 用本機檔案�
 
 ### 排程注意事項
 
-- `schedule` 只會在預設分支（`main`）上執行，工作流程檔必須先合併進 `master`。
+- `schedule` 只會在預設分支（`main`）上執行，這個 repo 的工作流程檔已在 `main` 上，不需額外動作。
 - GitHub 會在儲存庫 60 天沒有任何活動後自動停用排程；若上游長期沒更新，到 Actions 頁面按一次
   「Run workflow」即可重新啟用。
