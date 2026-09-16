@@ -1,0 +1,2 @@
+# adguard-filter
+Line Block
