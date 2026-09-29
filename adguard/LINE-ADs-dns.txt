@@ -1,7 +1,7 @@
 ! Title: LINE ADs + Privacy (AdGuard) (DNS only)
-! Description: LINE 去廣告 + 遙測/追蹤/分析阻擋 v20260904.02（需啟用 MitM over HTTP/2）
-! Version: 20260904.02
-! Last modified: 2026-09-16T16:55:01Z
+! Description: LINE 去廣告 + 遙測/追蹤/分析阻擋 v20260929.01（需啟用 MitM over HTTP/2）
+! Version: 20260929.01
+! Last modified: 2026-09-29T09:54:09Z
 ! Expires: 1 day (update frequency)
 ! Homepage: https://github.com/g91720/adguard-filter
 ! Source: https://raw.githubusercontent.com/jkgtw/Surge/master/Modules/LINE-ADs.sgmodule
