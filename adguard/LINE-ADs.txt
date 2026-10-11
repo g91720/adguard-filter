@@ -1,12 +1,12 @@
 ! Title: LINE ADs + Privacy (AdGuard)
-! Description: LINE 去廣告 + 遙測/追蹤/分析阻擋 v20260929.01（需啟用 MitM over HTTP/2）
-! Version: 20260929.01
-! Last modified: 2026-09-29T09:54:09Z
+! Description: LINE 去廣告 + 遙測/追蹤/分析阻擋 v20261011.02（需啟用 MitM over HTTP/2）
+! Version: 20261011.02
+! Last modified: 2026-10-11T10:04:46Z
 ! Expires: 1 day (update frequency)
 ! Homepage: https://github.com/g91720/adguard-filter
 ! Source: https://raw.githubusercontent.com/jkgtw/Surge/master/Modules/LINE-ADs.sgmodule
 ! Converted automatically from the Surge module above; do not edit by hand.
-! Rules: 4 domain, 23 URL (basic), 0 URL (regex), 0 skipped
+! Rules: 4 domain, 22 URL (basic), 1 URL (regex), 0 skipped
 ! URL rules only work with AdGuard HTTPS filtering enabled for these hosts:
 !   a.line.me, gw.line.naver.jp, legy.line-apps.com, w.line.me, sch.line.me, crs-event.line.me, static.line-scdn.net, web-mmap-pay.line-apps.com, scdn.line-apps.com, cix.line-apps.com
 !
@@ -72,8 +72,9 @@
 ! uts-front is LINE's analytics endpoint; block the whole collector host.
 ||uts-front.line-apps.com^
 
-! Also prevent LIFF/WebView pages from loading the UTS analytics SDK itself.
-||static.line-scdn.net/uts/
+! LINE UTS analytics
+! 保留新增官方帳號所需的 uts.js，其餘 UTS 資源繼續阻擋
+/^https:\/\/static\.line-scdn\.net(?::443)?\/uts\/(?!edge\/stable\/uts\.js(?:\?|$))/
 
 ! NELO2 diagnostics / log collector
 ||nelo2-col.linecorp.com^
